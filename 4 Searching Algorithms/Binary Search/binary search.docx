@@ -1,0 +1,23 @@
+Binary search is a highly efficient searching algorithm used to locate a specific element within a sorted collection, such as an array or a list. It takes advantage of the fact that the collection is sorted to quickly narrow down the search space, making it much faster than linear search for large collections.
+
+Here's how a binary search algorithm typically works:
+
+1. Start with a sorted collection, often an array or a list.
+
+2. Determine the middle element of the collection.
+
+3. Compare the middle element with the target element you're searching for.
+
+4. If the middle element matches the target element, the search is successful, and the index (or position) of the element is returned.
+
+5. If the middle element is greater than the target element, narrow the search to the left half of the collection (the half that comes before the middle element). Repeat the process in this left half.
+
+6. If the middle element is less than the target element, narrow the search to the right half of the collection (the half that comes after the middle element). Repeat the process in this right half.
+
+7. Continue dividing the remaining portion of the collection in half and comparing the middle element with the target element until either the target element is found, or it is determined that the target element is not present in the collection.
+
+8. If the target element is not found after all divisions, the search returns a "not found" result.
+
+Binary search has a significantly lower time complexity compared to linear search. In the average case, it has a time complexity of O(log n), where n is the number of elements in the collection. This means that the search time grows logarithmically with the size of the collection, making it highly efficient for large datasets. However, it is important to note that binary search requires the collection to be sorted; otherwise, it won't work correctly.
+
+Binary search is widely used in computer science and is a fundamental algorithm for searching in sorted collections. It is also used in various applications, including database indexing, searching in sorted arrays, and efficiently locating elements in data structures like binary search trees.

@@ -1,0 +1,32 @@
+Quick sort is a widely used, efficient, and comparison-based sorting algorithm that follows the divide-and-conquer approach. It works by selecting a "pivot" element from the array and partitioning the other elements into two subarrays, according to whether they are less than or greater than the pivot. The subarrays are then recursively sorted.
+
+Here's an example of how quick sort works in Python:
+
+```python
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    # Choose a pivot element (in this case, the last element)
+    pivot = arr[-1]
+
+    # Partition the array into elements less than and greater than the pivot
+    left = [x for x in arr[:-1] if x <= pivot]
+    right = [x for x in arr[:-1] if x > pivot]
+
+    # Recursively apply quick_sort to both partitions and combine them with the pivot
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+# Example usage:
+arr = [12, 11, 13, 5, 6, 7]
+sorted_arr = quick_sort(arr)
+print("Sorted array:", sorted_arr)
+```
+
+In this example:
+
+1. `quick_sort` is the main function that sorts the input array `arr`. If the array has one or zero elements, it's considered already sorted and is returned as is. Otherwise, it selects a pivot element (in this case, the last element) and partitions the array into two subarrays: `left` containing elements less than or equal to the pivot and `right` containing elements greater than the pivot.
+
+2. The function then recursively applies `quick_sort` to both the `left` and `right` partitions and combines them with the pivot element in the middle to produce the sorted result.
+
+When you run the example with the input `[12, 11, 13, 5, 6, 7]`, you'll get the sorted array `[5, 6, 7, 11, 12, 13]`. Quick sort is known for its efficient average-case performance, and it is often used in practice for sorting large datasets. However, its worst-case time complexity can be O(n^2), so it's important to choose an appropriate pivot selection strategy to minimize the chance of encountering worst-case scenarios.

@@ -1,0 +1,53 @@
+Radix sort is a non-comparison-based sorting algorithm that works by distributing elements into buckets based on their individual digits or characters. It starts by sorting the least significant digit and gradually moves towards the most significant digit, effectively creating a stable sort. Radix sort is particularly efficient when sorting integers or fixed-length strings.
+
+Here's an example of how radix sort works in Python for sorting integers:
+
+```python
+def radix_sort(arr):
+    # Find the maximum number to determine the number of digits
+    max_num = max(arr)
+    exp = 1
+
+    while max_num // exp > 0:
+        counting_sort(arr, exp)
+        exp *= 10
+
+def counting_sort(arr, exp):
+    n = len(arr)
+    output = [0] * n
+    count = [0] * 10  # There are 10 possible digits (0-9)
+
+    # Count the occurrences of each digit at the current position
+    for i in range(n):
+        index = (arr[i] // exp) % 10
+        count[index] += 1
+
+    # Update count to store the position of each digit in output
+    for i in range(1, 10):
+        count[i] += count[i - 1]
+
+    # Build the output array by placing elements in the correct position
+    i = n - 1
+    while i >= 0:
+        index = (arr[i] // exp) % 10
+        output[count[index] - 1] = arr[i]
+        count[index] -= 1
+        i -= 1
+
+    # Copy the sorted elements back to the original array
+    for i in range(n):
+        arr[i] = output[i]
+
+# Example usage:
+arr = [170, 45, 75, 90, 802, 24, 2, 66]
+radix_sort(arr)
+print("Sorted array:", arr)
+```
+
+In this example:
+
+- `radix_sort` is the main function responsible for sorting the input array `arr`. It determines the maximum number in the array to find out the number of digits in the maximum number. It then calls `counting_sort` for each digit's position, starting from the least significant digit and moving towards the most significant digit.
+
+- `counting_sort` is a helper function that performs counting sort based on the current digit position (`exp`). It counts the occurrences of each digit at the current position, updates the count array, and builds the output array in sorted order.
+
+When you run the example with the input `[170, 45, 75, 90, 802, 24, 2, 66]`, you'll get the sorted array `[2, 24, 45, 66, 75, 90, 170, 802]` after applying radix sort. Radix sort is efficient for sorting integers, especially when the integers have a fixed number of digits.

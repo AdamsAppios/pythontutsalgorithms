@@ -1,0 +1,53 @@
+Merge sort is a divide-and-conquer sorting algorithm known for its stability and efficient performance, particularly for large datasets. It divides the input array into smaller subarrays, sorts each subarray independently, and then merges the sorted subarrays back together to produce a single sorted array.
+
+Here's an example of how merge sort works in Python:
+
+```python
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    # Divide the input array into two halves
+    mid = len(arr) // 2
+    left_half = arr[:mid]
+    right_half = arr[mid:]
+
+    # Recursively apply merge_sort to both halves
+    left_half = merge_sort(left_half)
+    right_half = merge_sort(right_half)
+
+    # Merge the sorted halves
+    return merge(left_half, right_half)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+
+    # Merge the two sorted lists
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    # Append any remaining elements
+    result.extend(left[i:])
+    result.extend(right[j:])
+    
+    return result
+
+# Example usage:
+arr = [12, 11, 13, 5, 6, 7]
+sorted_arr = merge_sort(arr)
+print("Sorted array:", sorted_arr)
+```
+
+In this example:
+
+1. `merge_sort` is the main function that sorts the input array `arr`. If the array has one or zero elements, it's considered already sorted, and the function returns it as is. Otherwise, it divides the array into two halves and recursively applies `merge_sort` to both halves.
+
+2. `merge` is a helper function that takes two sorted arrays (`left` and `right`) and merges them into a single sorted array. It iterates through both arrays, comparing elements, and appending the smaller element to the `result` array. After one of the arrays is exhausted, it appends the remaining elements from the other array to `result`.
+
+When you run the example with the input `[12, 11, 13, 5, 6, 7]`, you'll get the sorted array `[5, 6, 7, 11, 12, 13]`. Merge sort is known for its stable sorting behavior, meaning that equal elements maintain their relative order in the sorted output.

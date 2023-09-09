@@ -1,0 +1,19 @@
+Linear search, also known as sequential search, is a simple and straightforward searching algorithm used to locate a specific element within a collection, such as an array or a list. It works by iterating through each element in the collection, one at a time, until it finds the desired element or determines that the element is not present in the collection.
+
+Here's how a linear search algorithm typically works:
+
+1. Start at the beginning of the collection.
+
+2. Compare the target element with the current element in the collection.
+
+3. If the current element matches the target element, the search is successful, and the index (or position) of the element is returned.
+
+4. If the current element does not match the target element, move to the next element in the collection (if there are more elements).
+
+5. Repeat steps 2-4 until the target element is found or until the end of the collection is reached.
+
+6. If the target element is not found after examining all elements, the search returns a "not found" result.
+
+Linear search is straightforward and easy to implement, making it suitable for small collections or cases where the collection is not sorted. However, its time complexity is O(n), where n is the number of elements in the collection. This means that in the worst case, it may have to examine every element in the collection to determine whether the target element is present or not.
+
+Linear search is not the most efficient searching algorithm for large, sorted collections, as it does not take advantage of any ordering in the data. For such cases, binary search (for sorted data) or other more advanced searching algorithms are preferred due to their faster search times.
