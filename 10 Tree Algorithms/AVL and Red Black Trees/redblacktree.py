@@ -118,11 +118,6 @@ nums = [20, 15, 25, 10, 5, 1, 30, 35, 40]
 for num in nums:
     tree.insert(num)
 
-# Insert the numbers
-nums = [20, 15, 25, 10, 5, 1, 30, 35, 40]
-for num in nums:
-    tree.insert(num)
-
 # Display the Red-Black Tree
 print("Red-Black Tree after insertions:")
 display_tree(tree.root)
